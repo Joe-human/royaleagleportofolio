@@ -1,0 +1,492 @@
+/* ==========================================================================
+   CSS Variables & Basic Setup
+   ========================================================================== */
+:root {
+    --bg-dark: #0a0d14;
+    --bg-darker: #05070a;
+    --card-bg: rgba(20, 26, 38, 0.6);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --gold: #e6c260;
+    --gold-bright: #ffd700;
+    --gold-glow: rgba(230, 194, 96, 0.25);
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --green: #10b981;
+    --red: #ef4444;
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Glow Background Effects */
+.glow-bg {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: -1;
+    pointer-events: none;
+}
+.glow-1 {
+    top: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(230, 194, 96, 0.15), transparent 70%);
+}
+.glow-2 {
+    top: 600px;
+    left: -150px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent 70%);
+}
+
+/* Helpers & Utilities */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.text-center { text-align: center; }
+.text-gold { color: var(--gold); }
+.text-green { color: var(--green); }
+.bg-darker { background-color: var(--bg-darker); }
+
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+/* Glassmorphism Card Style */
+.glass-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--gold), #b89335);
+    color: #000;
+    box-shadow: 0 10px 20px var(--gold-glow);
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px var(--gold-glow);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--card-border);
+}
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--gold);
+}
+
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    background: rgba(10, 13, 20, 0.8);
+    border-bottom: 1px solid var(--card-border);
+    padding: 1rem 0;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.brand-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+}
+.brand-logo span { color: var(--gold); }
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+    padding: 160px 0 100px;
+}
+.hero-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+.badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(230, 194, 96, 0.1);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+.hero-title span {
+    background: linear-gradient(135deg, #fff, var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+.hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    border-top: 1px solid var(--card-border);
+    padding-top: 1.5rem;
+}
+.stat-item h4 {
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+.stat-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Trading Card Visual */
+.trading-card {
+    border-top: 2px solid var(--gold);
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.badge-live {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--green);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+}
+.status-online {
+    font-size: 0.8rem;
+    color: var(--green);
+}
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.metric-row .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.chart-box {
+    margin: 1.5rem 0;
+}
+.chart-svg {
+    width: 100%;
+    height: 100px;
+}
+.trade-feed {
+    background: rgba(0,0,0,0.3);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+}
+.feed-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.buy-tag {
+    background: var(--green);
+    color: #000;
+    font-weight: bold;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   Sections General
+   ========================================================================== */
+.section {
+    padding: 100px 0;
+}
+.section-title {
+    margin-bottom: 4rem;
+}
+.section-title h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+.section-title p {
+    color: var(--text-muted);
+}
+
+/* Cards & Features */
+.feature-card {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+.step-num {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+}
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(230, 194, 96, 0.1);
+    color: var(--gold);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.benefit-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+/* Calculator Section */
+.calculator-card {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.calc-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-family: var(--font-sans);
+}
+.range-slider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.slider-val {
+    font-weight: bold;
+    color: var(--gold);
+}
+.calc-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0,0,0,0.2);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+}
+.result-box {
+    margin-bottom: 1.5rem;
+}
+.result-box h3 {
+    font-size: 2rem;
+    color: var(--gold);
+}
+.calc-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Performance Table */
+.table-container {
+    overflow-x: auto;
+}
+.performance-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+.performance-table th, .performance-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--card-border);
+}
+.performance-table th {
+    color: var(--gold);
+    font-family: var(--font-heading);
+}
+.roi-val {
+    color: var(--green);
+    font-weight: 600;
+}
+.dd-val {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Footer / CTA */
+.footer-cta {
+    max-width: 1000px; /* Diperlebar agar 3 kolom muat leluasa tanpa empet-empetan */
+    margin: 0 auto;
+}
+
+.contact-links {
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom sejajar di desktop */
+    gap: 1.25rem;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Konten langsung di tengah kartu */
+    gap: 0.85rem;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 1.25rem 1rem;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-card:hover {
+    border-color: var(--gold, #e6c260);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(230, 194, 96, 0.15);
+    background: rgba(20, 30, 50, 0.8);
+}
+
+.contact-card i {
+    font-size: 1.4rem;
+    color: var(--gold, #e6c260);
+    flex-shrink: 0;
+}
+
+.contact-card div {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.contact-card strong {
+    font-size: 0.88rem; /* Ukuran pas agar teks email panjang tidak off-screen */
+    font-weight: 600;
+    color: #f8fafc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footer-quote {
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 2rem;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .hero-container { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    
+    /* Otomatis berubah jadi 1 kolom tumpuk saat diakses via HP */
+    .contact-links {
+        grid-template-columns: 1fr;
+    }
+}
