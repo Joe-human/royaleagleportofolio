@@ -932,3 +932,118 @@ animation-iteration-count: 1 !important;
 transition-duration: 0.01ms !important;
 }
 }
+
+
+/* ==========================================================================
+   Mobile Overflow Fix
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    .container,
+    .nav-container,
+    .hero-container,
+    .hero-content,
+    .hero-visual,
+    .trading-card,
+    .card-body,
+    .card-header,
+    .asset-info,
+    .section,
+    .glass-card,
+    .calculator-card,
+    .calc-body,
+    .calc-inputs,
+    .calc-results,
+    .footer-cta {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .hero-container,
+    .grid,
+    .grid-2,
+    .grid-3,
+    .calc-body {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-container > *,
+    .grid > *,
+    .calc-body > * {
+        min-width: 0;
+    }
+
+    .card-header {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .asset-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .asset-info > div {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .badge-live {
+        display: inline-block;
+        margin: 0.35rem 0 0;
+        white-space: normal;
+    }
+
+    .status-online {
+        overflow-wrap: anywhere;
+    }
+
+    .metric-row {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .metric-row > div {
+        min-width: 0;
+        flex: 1 1 120px;
+    }
+
+    .metric-row .value {
+        overflow-wrap: anywhere;
+    }
+
+    .chart-box,
+    .chart-svg,
+    .trade-feed {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .feed-item {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        overflow-wrap: anywhere;
+    }
+
+    .table-container {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .performance-table {
+        min-width: 600px;
+    }
+
+    .contact-links {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
